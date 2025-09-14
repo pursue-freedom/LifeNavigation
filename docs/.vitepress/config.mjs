@@ -70,7 +70,7 @@ import markdownItTaskCheckbox from 'markdown-it-task-checkbox';
 
 /* ====== 1. 原来的 VitePress 配置（除了 sidebar 都可以照写） ====== */
 const vitePressOptions = {
-
+  appearance: false,
   markdown: {
     config: (md) => {
       md.use(markdownItTaskCheckbox) //todo
@@ -83,11 +83,28 @@ const vitePressOptions = {
   base: '/LifeNavigation/',
   title: "JuRuoWiki",
   description: "A VitePress Site",
+  
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: '/juruo.png',
+    logo: '/logo.png',
+    search: { 
+      provider: 'local'
+    }, 
     siteTitle: false, //标题隐藏
+
     returnToTopLabel:'返回顶部', 
+        //上次更新时间
+    lastUpdated: {
+      text: '最后更新于',
+      formatOptions: {
+        dateStyle: 'short', // 可选值full、long、medium、short
+        timeStyle: 'medium' // 可选值full、long、medium、short
+      },
+    },
+    docFooter: { 
+      prev: '上一页', 
+      next: '下一页', 
+    }, 
     nav: [
       { text: '首页', link: '/' },
       // { text: '详细介绍', items: [
@@ -97,8 +114,12 @@ const vitePressOptions = {
       //     { text: 'Runtime API Examples', link: '/api-examples' }
       //   ] },
       { text: '资源工具', link: '/资源工具' },
+      { text: '个人记录', items: [
+          { text: '认知', link: '/个人记录/认知' },
+          { text: '日常', link: '/个人记录/日常' },
+        ] },
       { text: '生活', items: [
-          { text: '吃饭', link: '/生活/吃饭' },
+          { text: '吃饭', link: '/生活/做饭' },
           { text: '心理', link: '/生活/心理' },
         ] },
       { text: '书籍', items: [
@@ -122,6 +143,13 @@ const vitePressSidebarOptions = [
     documentRootPath: 'docs',   // 文档根
     scanStartPath: '生活',     // 只扫 docs/guide
     resolvePath: '/生活/',     // 当 URL 以 /guide/ 开头时生效
+    collapsed: true,            // 默认折叠
+    useTitleFromFileHeading: true
+  },
+  {
+    documentRootPath: 'docs',   // 文档根
+    scanStartPath: '个人记录',     // 只扫 docs/guide
+    resolvePath: '/个人记录/',     // 当 URL 以 /guide/ 开头时生效
     collapsed: true,            // 默认折叠
     useTitleFromFileHeading: true
   },

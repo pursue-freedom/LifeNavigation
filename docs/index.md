@@ -28,7 +28,8 @@ features:
     title: 技能学习
     details: 网安 做饭 摄影
 
-lastUpdated: true
+lastUpdated: false
+# comment: false
 ---
 
 <Confetti />
